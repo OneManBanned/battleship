@@ -1,3 +1,7 @@
-import add from "./add"
+export class Sample {
+    public hello(name: string): string {
+        return `Hello ${name}`
+    }
+}
 
-console.log(add(3, 3))
+
