@@ -2,8 +2,9 @@
     "compilerOptions": {
         "outDir": "./dist",
         "sourceMap": true,
-        "noImplicitAny": true,
+//        "noImplicitAny": true,
         "allowJs": true,
+        "allowImportingTsExtensions": true,
         "esModuleInterop": true,
         "target": "es6",
         "module": "node16"
@@ -13,3 +14,4 @@
         "test"
     ]
 }
+

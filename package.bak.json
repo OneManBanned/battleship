@@ -4,8 +4,9 @@
   "description": "Battleship is a strategy type guessing game for two players.",
   "type": "module",
   "scripts": {
-    "test": "jest --runInBand",
-    "test:watch": "jest --runInBand --watchAll",
+//    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
+"test": "jest --runInBand",
+"test:watch": "jest --runInBand --watchAll",
     "watch": "webpack --watch",
     "build": "webpack",
     "start": "node ./dist/main.js"
@@ -28,8 +29,5 @@
     "typescript": "^5.5.3",
     "webpack": "^5.92.1",
     "webpack-cli": "^5.1.4"
-  },
-  "dependencies": {
-    "dotenv": "^16.4.5"
   }
 }
