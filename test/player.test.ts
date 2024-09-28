@@ -8,4 +8,5 @@ describe("Player class", () => {
         const p = new Player
         expect(Gameboard).toHaveBeenCalled()
     })
+
 })
