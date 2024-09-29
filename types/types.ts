@@ -1,6 +1,6 @@
 interface Point {
     x: number,
-    y: number
+    y: number,
 }
 
 export { Point };
