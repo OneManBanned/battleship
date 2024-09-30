@@ -9,8 +9,8 @@ describe("Gameboard class", () => {
         g = new Gameboard
     })
     
-    test("Gameboard should create 8 instances of Ship", () => {
-        expect(Ship).toHaveBeenCalledTimes(8)
+    test("Gameboard should create 10 instances of Ship", () => {
+        expect(Ship).toHaveBeenCalledTimes(10)
     })
 
     test("Gameboard.board rows should have a length of 10", () => {
@@ -36,6 +36,8 @@ describe("Gameboard class", () => {
     })
 
     test("placeShip should return false if given coordinates already contain a key", () => {
+        const ship = Ship.mock.instances[0]
+        console.log(ship)
         g.placeShip({ x: 9, y: 9 }, 1)
         expect(g.placeShip({ x: 9, y: 9 }, 1)).toBe(false);
     })
