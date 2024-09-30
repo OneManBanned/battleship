@@ -2,8 +2,10 @@ import Gameboard from "./gameboard.ts"
 
 export default class Player {
 
+    playerBoard: Gameboard;
+
     constructor() {
-        const board = new Gameboard
+        this.playerBoard = new Gameboard;
     }
 
 }

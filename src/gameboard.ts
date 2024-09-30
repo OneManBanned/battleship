@@ -1,6 +1,7 @@
 import Ship from "../src/ship.ts";
 import { Point } from "../types/types.ts";
 
+
 export default class Gameboard {
   ships: { [key: number]: Ship };
   board: undefined | number[][];
@@ -30,10 +31,8 @@ export default class Gameboard {
       let [x, y] = dir[i];
 
       if (
-        coords.x + x >= 0 &&
-        coords.x + x <= 9 &&
-        coords.y + y >= 0 &&
-        coords.y + y <= 9
+        coords.x + x >= 0 && coords.x + x <= 9 &&
+        coords.y + y >= 0 && coords.y + y <= 9
       ) {
         if (!this.emptyGrid({ x: coords.x + x, y: coords.y + y })) {
           return false;
@@ -60,10 +59,11 @@ export default class Gameboard {
 
   static createShips() {
     const container = {};
-    const totalShips = 8;
+    const totalShips = 10;
+    const shipLengths = [ 1, 1, 1, 1, 2, 2, 2, 3, 3, 4 ]
 
     for (let i = 0; i < totalShips; i++) {
-      container[i] = new Ship();
+      container[i] = new Ship(shipLengths[i], i);
     }
 
     return container;
