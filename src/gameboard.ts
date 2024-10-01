@@ -20,11 +20,9 @@ export default class Gameboard {
   }
 
   checkAdjacent(coords: Point) {
-    const dir = [
-      [-1, 0],
-      [1, 0],
-      [0, -1],
-      [0, 1],
+    const dir = [ 
+        [-1, 0], [1, 0],
+        [0, -1], [0, 1],
     ];
 
     for (let i = 0; i < dir.length; i++) {

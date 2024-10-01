@@ -3,10 +3,11 @@ import Ship from "../src/ship"
 jest.mock("../src/ship")
 
 describe("Gameboard class", () => {
-    let g: any;
+
+    let g;
 
     beforeEach(() => {
-        g = new Gameboard
+        g = new Gameboard()
     })
     
     test("Gameboard should create 10 instances of Ship", () => {
@@ -36,8 +37,6 @@ describe("Gameboard class", () => {
     })
 
     test("placeShip should return false if given coordinates already contain a key", () => {
-        const ship = Ship.mock.instances[0]
-        console.log(ship)
         g.placeShip({ x: 9, y: 9 }, 1)
         expect(g.placeShip({ x: 9, y: 9 }, 1)).toBe(false);
     })

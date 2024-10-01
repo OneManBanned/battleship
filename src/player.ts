@@ -8,4 +8,8 @@ export default class Player {
         this.playerBoard = new Gameboard;
     }
 
+    fireAtTarget() {
+
+    }
+
 }
