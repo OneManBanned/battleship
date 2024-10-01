@@ -9,8 +9,8 @@ describe("Player class", () => {
         expect(Gameboard).toHaveBeenCalled()
     })
 
-    test("playerLost should return true if all ships are sunk", () => {
-    
+    test("fireAtTarget should reduce ship length by one if target is ship", () => {
+          
     })
 
 })
