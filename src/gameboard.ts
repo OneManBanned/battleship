@@ -1,7 +1,6 @@
 import Ship from "../src/ship.ts";
 import { Point } from "../types/types.ts";
 
-
 export default class Gameboard {
   ships: { [key: number]: Ship };
   board: undefined | number[][];
@@ -11,15 +10,15 @@ export default class Gameboard {
     this.board = Gameboard.createBoard();
   }
 
-  emptyGrid(coords: Point) {
-    return this.board[coords.x][coords.y] === undefined ? true : false;
+  checkGrid(coords: Point) {
+    return this.board[coords.x][coords.y];
   }
 
   getCoordinates(coords: Point) {
     return this.board[coords.x][coords.y];
   }
 
-  checkAdjacent(coords: Point) {
+  checkEmptyAdjacent(coords: Point) {
     const dir = [ 
         [-1, 0], [1, 0],
         [0, -1], [0, 1],
@@ -32,7 +31,7 @@ export default class Gameboard {
         coords.x + x >= 0 && coords.x + x <= 9 &&
         coords.y + y >= 0 && coords.y + y <= 9
       ) {
-        if (!this.emptyGrid({ x: coords.x + x, y: coords.y + y })) {
+        if (this.checkGrid({ x: coords.x + x, y: coords.y + y })) {
           return false;
         }
       }
@@ -43,7 +42,7 @@ export default class Gameboard {
 
   placeShip(coords: Point, key: number) {
 
-    if (this.emptyGrid(coords) && this.checkAdjacent(coords)) {
+    if (this.checkGrid(coords) === undefined && this.checkEmptyAdjacent(coords)) {
 
       this.board[coords.x][coords.y] = key;
 

@@ -22,13 +22,13 @@ describe("Gameboard class", () => {
         expect(g.board[0]).toHaveLength(10)
     })
 
-    test("emptyGrid should return true if given coordinates value is undefined", () => {
-        expect(g.emptyGrid({ x: 0, y: 0 })).toBe(true);
+    test("checkGrid should return undefined if given coordinates grid is empty", () => {
+        expect(g.checkGrid({ x: 0, y: 0 })).toBeUndefined;
     })
 
-    test("emptyGrid should return false if given coordinates value is not undefined", () => {
+    test("checkGrid should return Ship key if given coordinates grid is a ship", () => {
         g.placeShip({ x: 0, y: 0 }, 1)
-        expect(g.emptyGrid({ x: 0, y: 0 })).toBe(false);
+        expect(g.checkGrid({ x: 0, y: 0 })).toBe(1);
     })
 
     test("placeShip should add the given key to given coordinates", () => {
@@ -41,17 +41,21 @@ describe("Gameboard class", () => {
         expect(g.placeShip({ x: 9, y: 9 }, 1)).toBe(false);
     })
 
-    test("checkAdjacent should return true if all adjacent grids are empty", () => {
-        expect(g.checkAdjacent({ x: 3, y: 3 })).toBe(true);
+    test("checkEmptyAdjacent should return true if all adjacent grids are empty", () => {
+        expect(g.checkEmptyAdjacent({ x: 3, y: 3 })).toBe(true);
     })
 
-    test("checkAdjacent should return false if an adjacent grid isn't empty", () => {
+    test("checkEmptyAdjacent should return false if an adjacent grid isn't empty", () => {
         g.placeShip({x: 4, y: 3}, 1)
-        expect(g.checkAdjacent({ x: 3, y: 3 })).toBe(false);
+        expect(g.checkEmptyAdjacent({ x: 3, y: 3 })).toBe(false);
     })
 
-    test("checkAdjacent should return true if adjacent grids are empty or walls", () => {
-        expect(g.checkAdjacent({ x: 9, y: 9 })).toBe(true);
+    test("checkEmptyAdjacent should return true if adjacent grids are empty or walls", () => {
+        expect(g.checkEmptyAdjacent({ x: 9, y: 9 })).toBe(true);
+    })
+
+    test("", () => {
+
     })
 
 })
