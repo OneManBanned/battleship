@@ -1,4 +1,5 @@
 import Gameboard from "./gameboard.ts"
+import { Point } from "../types/types.ts";
 
 export default class Player {
 
@@ -8,8 +9,13 @@ export default class Player {
         this.playerBoard = new Gameboard;
     }
 
-    fireAtTarget() {
-
+    fire(opponent: Player, coords: Point) {
+        console.log(opponent.playerBoard)
+        console.log(opponent.playerBoard.checkGrid(coords))
+        if (opponent.playerBoard.checkGrid(coords)) {
+            const shipKey = opponent.playerBoard.checkGrid(coords) 
+            opponent.playerBoard.ships[shipKey].hit();
+        }
     }
 
 }

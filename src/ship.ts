@@ -10,4 +10,8 @@ export default class Ship  {
         this.isSunk = false;
     }
 
+    hit() {
+        --this.length;
+    }
+
 }

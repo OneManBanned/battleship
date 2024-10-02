@@ -13,7 +13,7 @@ describe("battleships", () => {
     expect(b).toBeDefined();
   });
 
-  test("Battleship should create two instances Player classes", () => {
+  test("Battleship should create two Player class instances", () => {
     expect(Player).toHaveBeenCalledTimes(2)
   })
 
