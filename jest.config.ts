@@ -13,7 +13,9 @@ export default async (): Promise<Config.InitialOptions> => {
         testEnvironment: 'node',
         detectOpenHandles: true,
         collectCoverage: true,
-        transform: { "^.+\\.tsx?$": "ts-jest"},
+        transform: { 
+            "\\.[jt]sx?$" : "babel-jest",
+            "^.+\\.tsx?$": "ts-jest"},
         globalTeardown: "<rootDir>/test/jest-globals-teardown.ts",
         forceExit: true,
     }

@@ -10,8 +10,6 @@ export default class Player {
     }
 
     fire(opponent: Player, coords: Point) {
-        console.log(opponent.playerBoard)
-        console.log(opponent.playerBoard.checkGrid(coords))
         if (opponent.playerBoard.checkGrid(coords)) {
             const shipKey = opponent.playerBoard.checkGrid(coords) 
             opponent.playerBoard.ships[shipKey].hit();
