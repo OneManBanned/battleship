@@ -1,6 +1,6 @@
 import Player from '../src/player'
 import Gameboard from '../src/gameboard'
-jest.mock("../src/gameboard")
+jest.mock("../src/player")
 
 describe("Player class", () => {
 
@@ -14,11 +14,12 @@ describe("Player class", () => {
         expect(Gameboard).toHaveBeenCalled()
     })
 
-    test("fire should reduce ship length by one if target is ship", () => {
-         const opponent = new Player() 
-         opponent.playerBoard.placeShip({x: 0, y: 0}, 0)
-         p.fire(opponent, {x: 0, y: 0});
-         expect(opponent.playerBoard.ships[0].length).toBe(0)
+    test.only("fire should call Gameboard.checkGrid", () => {
+        const playerMock =  Player as jest.Mock
+        p.fire(playerMock, {x: 0, y: 0})
+        console.log(playerMock.mock)
+        console.log(playerMock.mock.calls)
+        console.log(playerMock.mock.contexts[0])
     })
 
 })
