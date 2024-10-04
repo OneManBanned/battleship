@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1727984495144" clover="3.2.0">
-  <project timestamp="1727984495144" name="All files">
-    <metrics statements="33" coveredstatements="28" conditionals="14" coveredconditionals="12" methods="13" coveredmethods="10" elements="60" coveredelements="50" complexity="0" loc="33" ncloc="33" packages="1" files="4" classes="4"/>
+<coverage generated="1728071934182" clover="3.2.0">
+  <project timestamp="1728071934182" name="All files">
+    <metrics statements="31" coveredstatements="28" conditionals="12" coveredconditionals="12" methods="13" coveredmethods="10" elements="56" coveredelements="50" complexity="0" loc="31" ncloc="31" packages="1" files="4" classes="4"/>
     <file name="battleships.ts" path="/home/brendan/Documents/Coding/projects/battleship/src/battleships.ts">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <line num="6" count="1" type="stmt"/>
@@ -34,11 +34,9 @@
       <line num="73" count="110" type="stmt"/>
     </file>
     <file name="player.ts" path="/home/brendan/Documents/Coding/projects/battleship/src/player.ts">
-      <metrics statements="4" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
       <line num="9" count="0" type="stmt"/>
-      <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="14" count="0" type="stmt"/>
-      <line num="15" count="0" type="stmt"/>
+      <line num="13" count="0" type="stmt"/>
     </file>
     <file name="ship.ts" path="/home/brendan/Documents/Coding/projects/battleship/src/ship.ts">
       <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>

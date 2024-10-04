@@ -10,10 +10,7 @@ export default class Player {
     }
 
     fire(opponent: Player, coords: Point) {
-        if (opponent.playerBoard.checkGrid(coords)) {
-            const shipKey = opponent.playerBoard.checkGrid(coords) 
-            opponent.playerBoard.ships[shipKey].hit();
-        }
+        opponent.playerBoard.checkGrid(coords)
     }
 
 }
