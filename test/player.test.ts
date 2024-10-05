@@ -1,6 +1,5 @@
 import Player from '../src/player'
 import Gameboard from '../src/gameboard'
-jest.mock("../src/player")
 jest.mock("../src/gameboard")
 
 describe("Player class", () => {
@@ -15,11 +14,15 @@ describe("Player class", () => {
         expect(Gameboard).toHaveBeenCalled()
     })
 
-    test.only("fire should call Gameboard.checkGrid", () => {
-        const opponent = new Player()
-        p.fire(opponent, {x: 0, y: 0})
-        console.log(jest.spyOn(p, "fire"))
-        console.log(p.fire.mock.calls[0][1])
+    test("fire should call opponent.playerBoard.checkGrid", () => {
+        const opponent = new Player
+        const points = {x: 0, y: 0}
+
+        jest.spyOn(opponent.playerBoard, "checkGrid")
+
+        p.fire(opponent, points)
+
+        expect(opponent.playerBoard.checkGrid).toHaveBeenCalled()
     })
 
 })
