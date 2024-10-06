@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1728155820453" clover="3.2.0">
-  <project timestamp="1728155820453" name="All files">
-    <metrics statements="31" coveredstatements="30" conditionals="12" coveredconditionals="12" methods="13" coveredmethods="12" elements="56" coveredelements="54" complexity="0" loc="31" ncloc="31" packages="1" files="4" classes="4"/>
+<coverage generated="1728244616826" clover="3.2.0">
+  <project timestamp="1728244616826" name="All files">
+    <metrics statements="35" coveredstatements="35" conditionals="14" coveredconditionals="14" methods="13" coveredmethods="13" elements="62" coveredelements="62" complexity="0" loc="35" ncloc="35" packages="1" files="4" classes="4"/>
     <file name="battleships.ts" path="/home/brendan/Documents/Coding/projects/battleship/src/battleships.ts">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <line num="6" count="1" type="stmt"/>
@@ -9,41 +9,45 @@
     </file>
     <file name="gameboard.ts" path="/home/brendan/Documents/Coding/projects/battleship/src/gameboard.ts">
       <metrics statements="23" coveredstatements="23" conditionals="12" coveredconditionals="12" methods="8" coveredmethods="8"/>
-      <line num="9" count="11" type="stmt"/>
-      <line num="10" count="11" type="stmt"/>
-      <line num="14" count="25" type="stmt"/>
+      <line num="9" count="20" type="stmt"/>
+      <line num="10" count="20" type="stmt"/>
+      <line num="14" count="33" type="stmt"/>
       <line num="18" count="1" type="stmt"/>
-      <line num="22" count="7" type="stmt"/>
-      <line num="27" count="7" type="stmt"/>
-      <line num="28" count="26" type="stmt"/>
-      <line num="30" count="26" type="cond" truecount="2" falsecount="0"/>
-      <line num="34" count="18" type="cond" truecount="2" falsecount="0"/>
+      <line num="22" count="8" type="stmt"/>
+      <line num="27" count="8" type="stmt"/>
+      <line num="28" count="30" type="stmt"/>
+      <line num="30" count="30" type="cond" truecount="2" falsecount="0"/>
+      <line num="34" count="20" type="cond" truecount="2" falsecount="0"/>
       <line num="35" count="1" type="stmt"/>
-      <line num="40" count="6" type="stmt"/>
-      <line num="45" count="5" type="cond" truecount="4" falsecount="0"/>
-      <line num="47" count="4" type="stmt"/>
+      <line num="40" count="7" type="stmt"/>
+      <line num="45" count="6" type="cond" truecount="4" falsecount="0"/>
+      <line num="47" count="5" type="stmt"/>
       <line num="51" count="1" type="stmt"/>
-      <line num="58" count="11" type="stmt"/>
-      <line num="59" count="11" type="stmt"/>
-      <line num="60" count="11" type="stmt"/>
-      <line num="62" count="11" type="stmt"/>
-      <line num="63" count="110" type="stmt"/>
-      <line num="66" count="11" type="stmt"/>
-      <line num="70" count="11" type="stmt"/>
-      <line num="71" count="11" type="stmt"/>
-      <line num="73" count="110" type="stmt"/>
+      <line num="58" count="20" type="stmt"/>
+      <line num="59" count="20" type="stmt"/>
+      <line num="60" count="20" type="stmt"/>
+      <line num="62" count="20" type="stmt"/>
+      <line num="63" count="200" type="stmt"/>
+      <line num="66" count="20" type="stmt"/>
+      <line num="70" count="20" type="stmt"/>
+      <line num="71" count="20" type="stmt"/>
+      <line num="73" count="200" type="stmt"/>
     </file>
     <file name="player.ts" path="/home/brendan/Documents/Coding/projects/battleship/src/player.ts">
-      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-      <line num="9" count="3" type="stmt"/>
-      <line num="13" count="1" type="stmt"/>
+      <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <line num="9" count="9" type="stmt"/>
+      <line num="13" count="5" type="stmt"/>
+      <line num="14" count="5" type="stmt"/>
+      <line num="16" count="5" type="cond" truecount="2" falsecount="0"/>
+      <line num="17" count="1" type="stmt"/>
+      <line num="19" count="1" type="stmt"/>
     </file>
     <file name="ship.ts" path="/home/brendan/Documents/Coding/projects/battleship/src/ship.ts">
-      <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
-      <line num="8" count="2" type="stmt"/>
-      <line num="9" count="2" type="stmt"/>
-      <line num="10" count="2" type="stmt"/>
-      <line num="14" count="0" type="stmt"/>
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <line num="8" count="92" type="stmt"/>
+      <line num="9" count="92" type="stmt"/>
+      <line num="10" count="92" type="stmt"/>
+      <line num="14" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>

@@ -10,7 +10,15 @@ export default class Player {
     }
 
     fire(opponent: Player, coords: Point) {
-        opponent.playerBoard.checkGrid(coords)
+        const board = opponent.playerBoard
+        const shipKey = board.checkGrid(coords)
+
+      if (!isNaN(shipKey)) {
+          const targetShip = board.ships[shipKey]
+
+          targetShip.hit();
+      }
+
     }
 
 }
