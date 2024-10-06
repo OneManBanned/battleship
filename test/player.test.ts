@@ -1,28 +1,53 @@
-import Player from '../src/player'
-import Gameboard from '../src/gameboard'
-jest.mock("../src/gameboard")
+import Player from "../src/player";
+import Gameboard from "../src/gameboard";
 
 describe("Player class", () => {
+  let p;
 
-    let p;
+  beforeEach(() => {
+    p = new Player();
+  });
 
-    beforeEach(() => {
-        p = new Player()
-    })
+  test("Player class should create an instance of gameboard class", () => {
+      expect(p.playerBoard).toBeDefined();
+  })
 
-    test("Player class should create an instance of gameboard class", () => {
-        expect(Gameboard).toHaveBeenCalled()
-    })
+  test("fire should call opponent.playerBoard.checkGrid", () => {
+    const opponent = new Player();
+    const points = { x: 0, y: 0 };
+    jest.spyOn(opponent.playerBoard, "checkGrid");
 
-    test("fire should call opponent.playerBoard.checkGrid", () => {
-        const opponent = new Player
-        const points = {x: 0, y: 0}
+    p.fire(opponent, points);
 
-        jest.spyOn(opponent.playerBoard, "checkGrid")
+    expect(opponent.playerBoard.checkGrid).toHaveBeenCalled();
+  });
 
-        p.fire(opponent, points)
+  test("fire should call opponent.playerBoard.checkGrid with given Points", () => {
+    const opponent = new Player();
+    const points = { x: 0, y: 0 };
+    jest.spyOn(opponent.playerBoard, "checkGrid");
 
-        expect(opponent.playerBoard.checkGrid).toHaveBeenCalled()
-    })
+    p.fire(opponent, points);
 
-})
+    expect(opponent.playerBoard.checkGrid).toHaveBeenCalledWith(points);
+  });
+
+  test("fire should decrease length of ship, if coordinates hold a ship", () => {
+      const opponent = new Player()
+      const points = {x: 0, y: 0}
+      opponent.playerBoard.placeShip({x: 0, y: 0}, 0)
+
+      p.fire(opponent, points)
+
+     expect(opponent.playerBoard.ships[0].length).toBe(0) 
+  });
+
+  test("fire should return undefined if grid coordinates are empty", () => {
+      const opponent = new Player()
+      const points = {x: 0, y: 0}
+
+
+
+      expect(p.fire(opponent, points)).toHaveReturnedWith(undefined)
+  });
+});

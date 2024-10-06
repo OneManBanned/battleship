@@ -60,7 +60,7 @@ export default class Gameboard {
     const shipLengths = [ 1, 1, 1, 1, 2, 2, 2, 3, 3, 4 ]
 
     for (let i = 0; i < totalShips; i++) {
-      container[i] = new Ship(shipLengths[i], i);
+      container[i] = new Ship(i, shipLengths[i]);
     }
 
     return container;
