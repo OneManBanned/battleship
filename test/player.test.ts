@@ -42,10 +42,10 @@ describe("Player class", () => {
      expect(opponent.playerBoard.ships[0].length).toBe(0) 
   });
 
-  test.skip("fire should return undefined if grid coordinates are empty", () => {
+  test("fire should return undefined if grid coordinates are empty", () => {
       const opponent = new Player()
       const points = {x: 0, y: 0}
 
-      expect(p.fire(opponent, points)).toHaveReturnedWith(undefined)
+      expect(p.fire(opponent, points)).toBe(undefined)
   });
 });
