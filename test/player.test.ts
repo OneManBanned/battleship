@@ -8,8 +8,8 @@ describe("Player class", () => {
     p = new Player();
   });
 
-  test("Player class should instance should have playerBoard defined", () => {
-      expect(p.playerBoard).toBeDefined();
+  test("Player class should create instance of playerBoard", () => {
+      expect(p.playerBoard).toEqual(new Gameboard);
   })
 
   test("fire should call opponent.playerBoard.checkGrid", () => {
@@ -48,4 +48,26 @@ describe("Player class", () => {
 
       expect(p.fire(opponent, points)).toBe(undefined)
   });
+
+  test("fire should should sink ship if ship length is 0 after being hit", () => {
+      const opponent = new Player()
+      const points = {x: 0, y: 0}
+      opponent.playerBoard.placeShip({x: 0, y: 0}, 0)
+
+      p.fire(opponent, points)
+
+     expect(opponent.playerBoard.ships[0].isSunk).toBe(true) 
+
+  })
+
+  test("fire should should not sink ship if length is greater than 0 after being hit", () => {
+      const opponent = new Player()
+      const points = {x: 0, y: 0}
+      opponent.playerBoard.placeShip({x: 0, y: 0}, 9)
+
+      p.fire(opponent, points)
+
+     expect(opponent.playerBoard.ships[0].isSunk).toBe(false) 
+  })
+
 });

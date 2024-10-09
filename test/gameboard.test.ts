@@ -33,7 +33,7 @@ describe("Gameboard class", () => {
 
     test("placeShip should add the given key to given coordinates", () => {
         g.placeShip({ x: 0, y: 0}, 1);
-        expect(g.getCoordinates({ x: 0, y: 0 })).toBe(1);
+        expect(g.checkGrid({ x: 0, y: 0 })).toBe(1);
     })
 
     test("placeShip should return false if given coordinates already contain a key", () => {
