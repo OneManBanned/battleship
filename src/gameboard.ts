@@ -14,10 +14,6 @@ export default class Gameboard {
     return this.board[coords.x][coords.y];
   }
 
-  getCoordinates(coords: Point) {
-    return this.board[coords.x][coords.y];
-  }
-
   checkEmptyAdjacent(coords: Point) {
     const dir = [
       [-1, 0],
