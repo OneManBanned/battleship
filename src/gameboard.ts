@@ -2,71 +2,72 @@ import Ship from "../src/ship.ts";
 import { Point } from "../types/types.ts";
 
 export default class Gameboard {
-  ships: { [key: number]: Ship };
-  board: undefined | number[][];
+    ships: { [key: number]: Ship };
+    board: undefined | number[][];
 
-  constructor() {
-    this.ships = Gameboard.createShips();
-    this.board = Gameboard.createBoard();
-  }
+    constructor() {
+        this.ships = Gameboard.createShips();
+        this.board = Gameboard.createBoard();
+    }
 
-  checkGrid(coords: Point) {
-    return this.board[coords.x][coords.y];
-  }
+    checkGrid(coords: Point) {
+        return this.board[coords.x][coords.y];
+    }
 
-  checkEmptyAdjacent(coords: Point) {
-    const dir = [
-      [-1, 0],
-      [1, 0],
-      [0, -1],
-      [0, 1],
-    ];
-
-    for (let i = 0; i < dir.length; i++) {
-      let [x, y] = dir[i];
-
-      if (
-        coords.x + x >= 0 &&
-        coords.x + x <= 9 &&
-        coords.y + y >= 0 &&
-        coords.y + y <= 9
-      ) {
-        if (this.checkGrid({ x: coords.x + x, y: coords.y + y })) {
-          return false;
+    placeShip(coords: Point, key: number) {
+        if (
+            this.checkGrid(coords) === undefined &&
+            this.checkEmptyAdjacent(coords)
+        ) {
+            this.board[coords.x][coords.y] = key;
+        } else {
+            return false;
         }
-      }
     }
 
-    return true;
-  }
+    private checkEmptyAdjacent(coords: Point) {
+        const dir = [
+            [-1, 0],
+            [1, 0],
+            [0, -1],
+            [0, 1],
+        ];
 
-  placeShip(coords: Point, key: number) {
-    if (
-      this.checkGrid(coords) === undefined &&
-      this.checkEmptyAdjacent(coords)
-    ) {
-      this.board[coords.x][coords.y] = key;
-    } else {
-      return false;
+        for (let i = 0; i < dir.length; i++) {
+            let [x, y] = dir[i];
+
+            if (
+                coords.x + x >= 0 &&
+                coords.x + x <= 9 &&
+                coords.y + y >= 0 &&
+                coords.y + y <= 9
+            ) {
+                if (this.checkGrid({ x: coords.x + x, y: coords.y + y })) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
-  }
 
-  static createShips() {
-    const container = {};
-    const totalShips = 10;
-    const shipLengths = [1, 1, 1, 1, 2, 2, 2, 3, 3, 4];
 
-    for (let i = 0; i < totalShips; i++) {
-      container[i] = new Ship(i, shipLengths[i]);
+    static createShips() {
+        const container = {};
+        const totalShips = 10;
+        const shipLengths = [1, 1, 1, 1, 2, 2, 2, 3, 3, 4];
+
+        for (let i = 0; i < totalShips; i++) {
+            container[i] = new Ship(i, shipLengths[i]);
+        }
+
+        return container;
     }
 
-    return container;
-  }
+    static createBoard() {
+        const rows = 10;
+        const columns = 10;
 
-  static createBoard() {
-    const rows = 10;
-    const columns = 10;
-
-    return [...Array(rows)].map(() => Array(columns).fill(undefined));
-  }
+        return [...Array(rows)].map(() => Array(columns).fill(undefined));
+    }
 }

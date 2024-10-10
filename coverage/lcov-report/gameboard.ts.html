@@ -135,7 +135,8 @@
 <a name='L70'></a><a href='#L70'>70</a>
 <a name='L71'></a><a href='#L71'>71</a>
 <a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -143,12 +144,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -178,106 +190,97 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">270x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">250x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">250x</span>
+<span class="cline-any cline-yes">270x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Ship from "../src/ship.ts";
 import { Point } from "../types/types.ts";
 &nbsp;
 export default class Gameboard {
-  ships: { [key: number]: Ship };
-  board: undefined | number[][];
+    ships: { [key: number]: Ship };
+    board: undefined | number[][];
 &nbsp;
-  constructor() {
-    this.ships = Gameboard.createShips();
-    this.board = Gameboard.createBoard();
-  }
+    constructor() {
+        this.ships = Gameboard.createShips();
+        this.board = Gameboard.createBoard();
+    }
 &nbsp;
-  checkGrid(coords: Point) {
-    return this.board[coords.x][coords.y];
-  }
+    checkGrid(coords: Point) {
+        return this.board[coords.x][coords.y];
+    }
 &nbsp;
-  checkEmptyAdjacent(coords: Point) {
-    const dir = [
-      [-1, 0],
-      [1, 0],
-      [0, -1],
-      [0, 1],
-    ];
-&nbsp;
-    for (let i = 0; i &lt; dir.length; i++) {
-      let [x, y] = dir[i];
-&nbsp;
-      if (
-        coords.x + x &gt;= 0 &amp;&amp;
-        coords.x + x &lt;= 9 &amp;&amp;
-        coords.y + y &gt;= 0 &amp;&amp;
-        coords.y + y &lt;= 9
-      ) {
-        if (this.checkGrid({ x: coords.x + x, y: coords.y + y })) {
-          return false;
+    placeShip(coords: Point, key: number) {
+        if (
+            this.checkGrid(coords) === undefined &amp;&amp;
+            this.checkEmptyAdjacent(coords)
+        ) {
+            this.board[coords.x][coords.y] = key;
+        } else {
+            return false;
         }
-      }
     }
 &nbsp;
-    return true;
-  }
+    private checkEmptyAdjacent(coords: Point) {
+        const dir = [
+            [-1, 0],
+            [1, 0],
+            [0, -1],
+            [0, 1],
+        ];
 &nbsp;
-  placeShip(coords: Point, key: number) {
-    if (
-      this.checkGrid(coords) === undefined &amp;&amp;
-      this.checkEmptyAdjacent(coords)
-    ) {
-      this.board[coords.x][coords.y] = key;
-    } else {
-      return false;
+        for (let i = 0; i &lt; dir.length; i++) {
+            let [x, y] = dir[i];
+&nbsp;
+            if (
+                coords.x + x &gt;= 0 &amp;&amp;
+                coords.x + x &lt;= 9 &amp;&amp;
+                coords.y + y &gt;= 0 &amp;&amp;
+                coords.y + y &lt;= 9
+            ) {
+                if (this.checkGrid({ x: coords.x + x, y: coords.y + y })) {
+                    return false;
+                }
+            }
+        }
+&nbsp;
+        return true;
     }
-  }
 &nbsp;
-  static createShips() {
-    const container = {};
-    const totalShips = 10;
-    const shipLengths = [1, 1, 1, 1, 2, 2, 2, 3, 3, 4];
 &nbsp;
-    for (let i = 0; i &lt; totalShips; i++) {
-      container[i] = new Ship(i, shipLengths[i]);
+    static createShips() {
+        const container = {};
+        const totalShips = 10;
+        const shipLengths = [1, 1, 1, 1, 2, 2, 2, 3, 3, 4];
+&nbsp;
+        for (let i = 0; i &lt; totalShips; i++) {
+            container[i] = new Ship(i, shipLengths[i]);
+        }
+&nbsp;
+        return container;
     }
 &nbsp;
-    return container;
-  }
+    static createBoard() {
+        const rows = 10;
+        const columns = 10;
 &nbsp;
-  static createBoard() {
-    const rows = 10;
-    const columns = 10;
-&nbsp;
-    return [...Array(rows)].map(() =&gt; Array(columns).fill(undefined));
-  }
+        return [...Array(rows)].map(() =&gt; Array(columns).fill(undefined));
+    }
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -286,7 +289,7 @@ export default class Gameboard {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-09T06:27:34.376Z
+                at 2024-10-10T07:02:18.733Z
             </div>
         <script src="prettify.js"></script>
         <script>
