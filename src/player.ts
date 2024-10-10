@@ -21,4 +21,15 @@ export default class Player {
 
     }
 
+    shipsSunk() {
+        for (const [key, value] of Object.entries(this.playerBoard.ships)) {
+            if (!value.isSunk) {
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+
 }
