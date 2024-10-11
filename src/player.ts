@@ -22,13 +22,12 @@ export default class Player {
     }
 
     shipsSunk() {
+        let shipsSet = new Set()
         for (const [key, value] of Object.entries(this.playerBoard.ships)) {
-            if (!value.isSunk) {
-                return false;
-            }
+            shipsSet.add(value.isSunk)
         }
 
-        return true;
+        return shipsSet.size === 1 && shipsSet[0] ? true : false;
 
     }
 
