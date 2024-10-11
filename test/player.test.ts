@@ -75,7 +75,6 @@ describe("Player class", () => {
   })
 
   test("shipsSunk should return true if all player ships are sunk", () => {
-      console.log(p.playerBooard.ships)
 
       expect(p.shipsSunk()).toBe(true)
   })
