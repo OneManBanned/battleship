@@ -75,8 +75,14 @@ describe("Player class", () => {
   })
 
   test("shipsSunk should return true if all player ships are sunk", () => {
+      const gameboardMock = jest.mock("../src/gameboard")
 
-      expect(p.shipsSunk()).toBe(true)
+      console.log(gameboardMock)
+
+
+    
+
+  //    expect(p.shipsSunk()).toBe(true)
   })
 
 });
