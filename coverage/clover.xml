@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1728759128529" clover="3.2.0">
-  <project timestamp="1728759128530" name="All files">
+<coverage generated="1728846402054" clover="3.2.0">
+  <project timestamp="1728846402055" name="All files">
     <metrics statements="40" coveredstatements="40" conditionals="22" coveredconditionals="20" methods="14" coveredmethods="14" elements="76" coveredelements="74" complexity="0" loc="40" ncloc="40" packages="1" files="4" classes="4"/>
     <file name="battleships.ts" path="/home/brendan/Documents/Coding/projects/battleship/src/battleships.ts">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
