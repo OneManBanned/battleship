@@ -54,8 +54,21 @@ describe("Gameboard class", () => {
         expect(g.checkEmptyAdjacent({ x: 9, y: 9 })).toBe(true);
     })
 
-    test("", () => {
+    test("shipsSunk should return true if all ships have been sunk", () => {
+        const gameboardMock = jest.spyOn(Gameboard, "createShips").mockImplementation(() => {
+        const container = {};
+        const totalShips = 10;
+        const shipLengths = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
+        for (let i = 0; i < totalShips; i++) {
+            container[i] = new Ship(i, shipLengths[i]);
+        }
+
+        return container;
+
+        })
+
+        console.log(gameboardMock)
     })
 
 })

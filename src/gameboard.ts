@@ -70,4 +70,8 @@ export default class Gameboard {
 
         return [...Array(rows)].map(() => Array(columns).fill(undefined));
     }
+
+    shipsSunk() {
+
+    }
 }
