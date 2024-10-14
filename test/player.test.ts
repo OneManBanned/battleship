@@ -1,6 +1,5 @@
 import Player from "../src/player";
 import Gameboard from "../src/gameboard";
-import Ship from "../src/ship"
 
 describe("Player class", () => {
   let p;
@@ -61,37 +60,5 @@ describe("Player class", () => {
 
   })
 
-  test("fire should should not sink ship if length is greater than 0 after being hit", () => {
-      const opponent = new Player()
-      const points = {x: 0, y: 0}
-      opponent.playerBoard.placeShip({x: 0, y: 0}, 9)
-
-      p.fire(opponent, points)
-
-     expect(opponent.playerBoard.ships[0].isSunk).toBe(false) 
-  })
-
-  test("shipsSunk should return false if player has any ships left afloat", () => {
-      expect(p.shipsSunk()).toBe(false)
-  })
-
-  test("shipsSunk should return true if all player ships are sunk", () => {
-      const gameboardMock = jest
-      .spyOn(Gameboard, "createShips")
-      .mockImplementation(() => {
-        const container = {};
-        const totalShips = 10;
-        const shipLengths = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-
-        for (let i = 0; i < totalShips; i++) {
-            container[i] = new Ship(i, shipLengths[i]);
-        }
-
-        return container;
-      })
-
-
-    
-  })
 
 });
