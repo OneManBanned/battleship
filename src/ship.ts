@@ -6,7 +6,7 @@ export default class Ship {
     constructor(key: number, length: number) {
         this.key = key;
         this.length = length;
-        this.isSunk = this.length > 0 ? false : true;
+        this.isSunk = false
     }
 
     hit() {

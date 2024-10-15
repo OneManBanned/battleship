@@ -1,4 +1,5 @@
 import Gameboard from "../src/gameboard"
+import Player from "../src/player";
 import Ship from "../src/ship"
 jest.mock("../src/ship")
 
@@ -55,20 +56,31 @@ describe("Gameboard class", () => {
     })
 
     test("shipsSunk should return true if all ships have been sunk", () => {
-        const gameboardMock = jest.spyOn(Gameboard, "createShips").mockImplementation(() => {
+        const shipMock = {
+            isSunk: true
+        }
+        jest.spyOn(Gameboard, "createShips").mockImplementation(() => {
         const container = {};
         const totalShips = 10;
-        const shipLengths = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
         for (let i = 0; i < totalShips; i++) {
-            container[i] = new Ship(i, shipLengths[i]);
+            container[i] = shipMock;
         }
 
         return container;
 
         })
 
-        console.log(gameboardMock)
+        const p = new Player
+
+        expect(p.playerBoard.shipsSunk()).toBe(true)
+
     })
 
+    test("shipsSunk should return false if any ship is still afloat", () => {
+        const p = new Player
+
+        expect(p.playerBoard.shipsSunk()).toBe(false)
+
+    })
 })
