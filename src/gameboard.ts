@@ -25,6 +25,10 @@ export default class Gameboard {
         }
     }
 
+    shipsSunk() {
+        return true
+    }
+
     private checkEmptyAdjacent(coords: Point) {
         const dir = [
             [-1, 0],
@@ -71,7 +75,4 @@ export default class Gameboard {
         return [...Array(rows)].map(() => Array(columns).fill(undefined));
     }
 
-    shipsSunk() {
-
-    }
 }
