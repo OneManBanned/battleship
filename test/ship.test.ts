@@ -11,4 +11,12 @@ describe("Ship class", () => {
         const ship = new Ship(1, 2)
         expect(ship.length).toBe(2)
     })
+
+    test("hit should decrease ship length by 1", () => {
+        const ship = new Ship(1, 2)
+
+        ship.hit()
+
+        expect(ship.length).toBe(1)
+    })
 })
