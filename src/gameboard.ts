@@ -12,13 +12,31 @@ export default class Gameboard {
 
   placeShip(coords: Point, key: number) {
 
-      console.log(this.ships[key])
-    if (
-      this.checkGrid(coords) === undefined &&
-      this.checkEmptyAdjacent(coords)
-    ) {
-      this.board[coords.x][coords.y] = key;
-    }
+      const shipLength = this.ships[key].length - 1
+      let availableGrid = 0
+      let yAxis = coords.y
+
+      if (this.checkGrid(coords) === undefined && this.checkEmptyAdjacent(coords, key)) {
+
+      for (let i = 0; i < shipLength; ++i) {
+          let nextCoords = {x: coords.x, y: yAxis}
+          if (this.checkGrid(nextCoords) === undefined && this.checkEmptyAdjacent(nextCoords, key)) {
+              availableGrid++
+              yAxis++
+          }
+      }
+
+      yAxis = coords.y
+
+      if (shipLength === availableGrid) {
+          for (let i = 0; i <= shipLength; ++i) {
+              this.board[coords.x][yAxis] = key
+              yAxis++
+          }
+      }
+
+  }
+
   }
 
   shipsSunk() {
@@ -33,7 +51,7 @@ export default class Gameboard {
     return this.board[coords.x][coords.y];
   }
 
-  private checkEmptyAdjacent(coords: Point) {
+  private checkEmptyAdjacent(coords: Point, key: number) {
     const dir = [
       [-1, 0],
       [1, 0],
@@ -43,14 +61,12 @@ export default class Gameboard {
 
     for (let i = 0; i < dir.length; i++) {
       let [x, y] = dir[i];
+      if (coords.x + x >= 0 && coords.x + x <= 9 &&
+        coords.y + y >= 0 && coords.y + y <= 9) {
 
-      if (
-        coords.x + x >= 0 &&
-        coords.x + x <= 9 &&
-        coords.y + y >= 0 &&
-        coords.y + y <= 9
-      ) {
-        if (this.checkGrid({ x: coords.x + x, y: coords.y + y })) {
+        let gridKey = this.checkGrid({ x: coords.x + x, y: coords.y + y })
+
+        if (gridKey !== key && gridKey !== undefined) {
           return false;
         }
       }

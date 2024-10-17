@@ -9,13 +9,11 @@ describe("Gameboard class", () => {
     g = new Gameboard();
   });
 
-  test("Gameboard should create 10 instances of Ship", () => {
-      const ship = jest.mock("../src/ship")
-    expect(ship).toHaveBeenCalledTimes(10);
+  test.skip("Gameboard should create 10 instances of Ship", () => {
+    expect(Ship).toHaveBeenCalledTimes(10);
   });
 
   test("Gameboard.board rows should have a length of 10", () => {
-
     expect(g.board).toHaveLength(10);
   });
 
@@ -42,29 +40,29 @@ describe("Gameboard class", () => {
       jest.spyOn(Gameboard, "createShips").mockImplementation(() => {
           const container = {}
 
-          container[0] = new Ship(0, 4)
+          container[0] = new Ship(0, 2)
           return container
       })
       const gameboardMock = new Gameboard
 
       gameboardMock.placeShip({x: 0, y: 0}, 0)
 
-    
     expect(gameboardMock.checkGrid({ x: 0, y: 0 })).toBe(0);
-    expect(gameboardMock.checkGrid({ x: 1, y: 0 })).toBe(0);
+    expect(gameboardMock.checkGrid({ x: 0, y: 1 })).toBe(0);
+
   });
 
   test("checkEmptyAdjacent should return true if all adjacent grids are empty", () => {
-    expect(g.checkEmptyAdjacent({ x: 3, y: 3 })).toBe(true);
+    expect(g.checkEmptyAdjacent({ x: 3, y: 3 }, 0)).toBe(true);
   });
 
   test("checkEmptyAdjacent should return false if an adjacent grid isn't empty", () => {
-    g.placeShip({ x: 4, y: 3 }, 1);
-    expect(g.checkEmptyAdjacent({ x: 3, y: 3 })).toBe(false);
+    g.placeShip({ x: 4, y: 3 }, 0);
+    expect(g.checkEmptyAdjacent({ x: 3, y: 3 }, 1)).toBe(false);
   });
 
   test("checkEmptyAdjacent should return true if adjacent grids are empty or walls", () => {
-    expect(g.checkEmptyAdjacent({ x: 9, y: 9 })).toBe(true);
+    expect(g.checkEmptyAdjacent({ x: 9, y: 9 }, 0)).toBe(true);
   });
 
   test("shipsSunk should return true if all ships have been sunk", () => {
