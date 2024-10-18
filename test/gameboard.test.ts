@@ -1,6 +1,7 @@
 import Gameboard from "../src/gameboard";
 import Player from "../src/player";
 import Ship from "../src/ship";
+jest.mock("../src/ship")
 
 describe("Gameboard class", () => {
   let g;
@@ -9,7 +10,7 @@ describe("Gameboard class", () => {
     g = new Gameboard();
   });
 
-  test.skip("Gameboard should create 10 instances of Ship", () => {
+  test("Gameboard should create 10 instances of Ship", () => {
     expect(Ship).toHaveBeenCalledTimes(10);
   });
 
@@ -26,11 +27,13 @@ describe("Gameboard class", () => {
   });
 
   test("checkGrid should return Ship key if given coordinates grid is a ship", () => {
+    g.ships[1] = {key: 1, length: 1}
     g.placeShip({ x: 0, y: 0 }, 1);
     expect(g.checkGrid({ x: 0, y: 0 })).toBe(1);
   });
 
   test("placeShip should add the given key to given coordinates", () => {
+    g.ships[1] = {key: 1, length: 1}
     g.placeShip({ x: 0, y: 0 }, 1);
     expect(g.checkGrid({ x: 0, y: 0 })).toBe(1);
   });
@@ -40,7 +43,7 @@ describe("Gameboard class", () => {
       jest.spyOn(Gameboard, "createShips").mockImplementation(() => {
           const container = {}
 
-          container[0] = new Ship(0, 2)
+          container[0] = {length: 2, key: 0}
           return container
       })
       const gameboardMock = new Gameboard
