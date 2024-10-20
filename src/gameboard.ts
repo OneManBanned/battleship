@@ -1,7 +1,8 @@
-import Ship from "../src/ship.ts";
-import { Point } from "../types/types.ts";
+import Ship from "../src/ship";
+import { Point } from "../types/types";
 
 export default class Gameboard {
+
   ships: { [key: number]: Ship };
   board: undefined | number[][];
 
@@ -10,7 +11,7 @@ export default class Gameboard {
     this.board = Gameboard.createBoard();
   }
 
-  placeShip(coords: Point, key: number) {
+  private placeShip(coords: Point, key: number) {
 
       const shipLength = this.ships[key].length - 1
       let availableGrid = 0
@@ -34,7 +35,6 @@ export default class Gameboard {
               yAxis++
           }
       }
-
   }
 
   }
@@ -75,6 +75,11 @@ export default class Gameboard {
     return true;
   }
 
+  defaultShipPlacement() {
+      const defaultShipCoords = [{x: 1, y: 1}, {x: 1, y: 3}, {x: 1, y: 5}, {x: 1, y: 7}, {x: 3, y: 1}, {x: 3, y: 4}, {x: 3, y: 7}, {x: 5, y: 1}, {x: 5, y: 5}, {x: 7, y: 1}]
+      defaultShipCoords.map((coords, index) => this.placeShip(coords, index))
+  }
+
   static createShips() {
     const container = {};
     const totalShips = 10;
@@ -87,10 +92,11 @@ export default class Gameboard {
     return container;
   }
 
-  static createBoard () {
+  private static createBoard () {
     const rows = 10;
     const columns = 10;
 
     return [...Array(rows)].map(() => Array(columns).fill(undefined));
   }
+
 }

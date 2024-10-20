@@ -1,5 +1,5 @@
-import Gameboard from "./gameboard.ts"
-import { Point } from "../types/types.ts";
+import Gameboard from "./gameboard"
+import { Point } from "../types/types";
 
 export default class Player {
 

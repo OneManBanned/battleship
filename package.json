@@ -2,7 +2,6 @@
   "name": "battleship",
   "version": "1.0.0",
   "description": "Battleship is a strategy type guessing game for two players.",
-  "type": "module",
   "scripts": {
     "test": "jest --runInBand",
     "test:watch": "jest --runInBand --watchAll",
