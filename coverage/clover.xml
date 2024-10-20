@@ -1,51 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1729251939829" clover="3.2.0">
-  <project timestamp="1729251939829" name="All files">
-    <metrics statements="51" coveredstatements="51" conditionals="26" coveredconditionals="23" methods="14" coveredmethods="14" elements="91" coveredelements="88" complexity="0" loc="51" ncloc="51" packages="1" files="4" classes="4"/>
+<coverage generated="1729416962771" clover="3.2.0">
+  <project timestamp="1729416962771" name="All files">
+    <metrics statements="54" coveredstatements="53" conditionals="28" coveredconditionals="23" methods="17" coveredmethods="16" elements="99" coveredelements="92" complexity="0" loc="54" ncloc="54" packages="1" files="4" classes="4"/>
     <file name="battleships.ts" path="/home/brendan/Documents/Coding/projects/battleship/src/battleships.ts">
-      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <line num="6" count="1" type="stmt"/>
-      <line num="7" count="1" type="stmt"/>
+      <metrics statements="3" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
     </file>
     <file name="gameboard.ts" path="/home/brendan/Documents/Coding/projects/battleship/src/gameboard.ts">
-      <metrics statements="37" coveredstatements="37" conditionals="22" coveredconditionals="19" methods="8" coveredmethods="8"/>
-      <line num="9" count="27" type="stmt"/>
+      <metrics statements="39" coveredstatements="39" conditionals="22" coveredconditionals="19" methods="10" coveredmethods="10"/>
       <line num="10" count="27" type="stmt"/>
-      <line num="15" count="6" type="stmt"/>
-      <line num="16" count="6" type="stmt"/>
-      <line num="17" count="6" type="stmt"/>
-      <line num="19" count="6" type="cond" truecount="3" falsecount="1"/>
-      <line num="21" count="6" type="stmt"/>
-      <line num="22" count="2" type="stmt"/>
-      <line num="23" count="2" type="cond" truecount="3" falsecount="1"/>
-      <line num="24" count="2" type="stmt"/>
-      <line num="25" count="2" type="stmt"/>
-      <line num="29" count="6" type="stmt"/>
-      <line num="31" count="6" type="cond" truecount="1" falsecount="1"/>
-      <line num="32" count="6" type="stmt"/>
-      <line num="33" count="8" type="stmt"/>
-      <line num="34" count="8" type="stmt"/>
+      <line num="11" count="27" type="stmt"/>
+      <line num="16" count="16" type="stmt"/>
+      <line num="17" count="16" type="stmt"/>
+      <line num="18" count="16" type="stmt"/>
+      <line num="20" count="16" type="cond" truecount="3" falsecount="1"/>
+      <line num="22" count="16" type="stmt"/>
+      <line num="23" count="11" type="stmt"/>
+      <line num="24" count="11" type="cond" truecount="3" falsecount="1"/>
+      <line num="25" count="11" type="stmt"/>
+      <line num="26" count="11" type="stmt"/>
+      <line num="30" count="16" type="stmt"/>
+      <line num="32" count="16" type="cond" truecount="1" falsecount="1"/>
+      <line num="33" count="16" type="stmt"/>
+      <line num="34" count="27" type="stmt"/>
+      <line num="35" count="27" type="stmt"/>
       <line num="43" count="2" type="stmt"/>
       <line num="44" count="11" type="cond" truecount="2" falsecount="0"/>
       <line num="47" count="1" type="stmt"/>
-      <line num="51" count="46" type="stmt"/>
-      <line num="55" count="11" type="stmt"/>
-      <line num="62" count="11" type="stmt"/>
-      <line num="63" count="42" type="stmt"/>
-      <line num="64" count="42" type="cond" truecount="6" falsecount="0"/>
-      <line num="67" count="28" type="stmt"/>
-      <line num="69" count="28" type="cond" truecount="4" falsecount="0"/>
+      <line num="51" count="139" type="stmt"/>
+      <line num="55" count="30" type="stmt"/>
+      <line num="62" count="30" type="stmt"/>
+      <line num="63" count="118" type="stmt"/>
+      <line num="64" count="118" type="cond" truecount="6" falsecount="0"/>
+      <line num="67" count="104" type="stmt"/>
+      <line num="69" count="104" type="cond" truecount="4" falsecount="0"/>
       <line num="70" count="1" type="stmt"/>
-      <line num="75" count="10" type="stmt"/>
-      <line num="79" count="19" type="stmt"/>
-      <line num="80" count="19" type="stmt"/>
-      <line num="81" count="19" type="stmt"/>
-      <line num="83" count="19" type="stmt"/>
-      <line num="84" count="190" type="stmt"/>
-      <line num="87" count="19" type="stmt"/>
-      <line num="91" count="27" type="stmt"/>
-      <line num="92" count="27" type="stmt"/>
-      <line num="94" count="270" type="stmt"/>
+      <line num="75" count="29" type="stmt"/>
+      <line num="79" count="1" type="stmt"/>
+      <line num="80" count="10" type="stmt"/>
+      <line num="84" count="24" type="stmt"/>
+      <line num="85" count="24" type="stmt"/>
+      <line num="86" count="24" type="stmt"/>
+      <line num="88" count="24" type="stmt"/>
+      <line num="89" count="240" type="stmt"/>
+      <line num="92" count="24" type="stmt"/>
+      <line num="96" count="27" type="stmt"/>
+      <line num="97" count="27" type="stmt"/>
+      <line num="99" count="270" type="stmt"/>
     </file>
     <file name="player.ts" path="/home/brendan/Documents/Coding/projects/battleship/src/player.ts">
       <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
@@ -58,9 +61,9 @@
     </file>
     <file name="ship.ts" path="/home/brendan/Documents/Coding/projects/battleship/src/ship.ts">
       <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
-      <line num="7" count="123" type="stmt"/>
-      <line num="8" count="123" type="stmt"/>
-      <line num="9" count="123" type="stmt"/>
+      <line num="7" count="243" type="stmt"/>
+      <line num="8" count="243" type="stmt"/>
+      <line num="9" count="243" type="stmt"/>
       <line num="13" count="3" type="stmt"/>
       <line num="14" count="3" type="cond" truecount="2" falsecount="0"/>
       <line num="17" count="2" type="stmt"/>

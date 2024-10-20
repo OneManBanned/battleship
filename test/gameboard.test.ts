@@ -1,17 +1,11 @@
 import Gameboard from "../src/gameboard";
 import Player from "../src/player";
-import Ship from "../src/ship";
-jest.mock("../src/ship")
 
 describe("Gameboard class", () => {
   let g;
 
   beforeEach(() => {
     g = new Gameboard();
-  });
-
-  test("Gameboard should create 10 instances of Ship", () => {
-    expect(Ship).toHaveBeenCalledTimes(10);
   });
 
   test("Gameboard.board rows should have a length of 10", () => {
@@ -40,7 +34,7 @@ describe("Gameboard class", () => {
 
   test("placeShip should add ship key to as many grids as the ships length", () => {
 
-      jest.spyOn(Gameboard, "createShips").mockImplementation(() => {
+      jest.spyOn(Gameboard, "createShips").mockImplementationOnce(() => {
           const container = {}
 
           container[0] = {length: 2, key: 0}
@@ -50,8 +44,10 @@ describe("Gameboard class", () => {
 
       gameboardMock.placeShip({x: 0, y: 0}, 0)
 
-    expect(gameboardMock.checkGrid({ x: 0, y: 0 })).toBe(0);
-    expect(gameboardMock.checkGrid({ x: 0, y: 1 })).toBe(0);
+    expect(gameboardMock.board[0][0]).toBe(0);
+    expect(gameboardMock.board[0][1]).toBe(0);
+
+  jest.spyOn(Gameboard, "createShips").mockRestore()
 
   });
 
@@ -68,8 +64,21 @@ describe("Gameboard class", () => {
     expect(g.checkEmptyAdjacent({ x: 9, y: 9 }, 0)).toBe(true);
   });
 
+  test("defaultShipPlacement should arrange the ships on the board", () => {
+
+      const defaultShipCoords = [{x: 1, y: 1}, {x: 1, y: 3}, {x: 1, y: 5}, {x: 1, y: 7}, {x: 3, y: 1}, {x: 3, y: 4}, {x: 3, y: 7}, {x: 5, y: 1}, {x: 5, y: 5}, {x: 7, y: 1}]
+
+      g.defaultShipPlacement()
+      console.log(g, '\n', g.board)
+
+      for (let i = 0; i < defaultShipCoords.length; i++) {
+            expect(g.board[defaultShipCoords[i].x][defaultShipCoords[i].y]).toBe(i)
+      }
+
+  })
+
   test("shipsSunk should return true if all ships have been sunk", () => {
-    jest.spyOn(Gameboard, "createShips").mockImplementation(() => {
+    jest.spyOn(Gameboard, "createShips").mockImplementationOnce(() => {
       const container = {};
       const totalShips = 10;
 
@@ -83,10 +92,13 @@ describe("Gameboard class", () => {
     const p = new Player();
 
     expect(p.playerBoard.shipsSunk()).toBe(true);
+
+  jest.spyOn(Gameboard, "createShips").mockRestore()
+
   });
 
   test("shipsSunk should return false if any ship is still afloat", () => {
-    jest.spyOn(Gameboard, "createShips").mockImplementation(() => {
+    jest.spyOn(Gameboard, "createShips").mockImplementationOnce(() => {
       const container = {};
       const totalShips = 10;
 
@@ -100,5 +112,9 @@ describe("Gameboard class", () => {
     const p = new Player();
 
     expect(p.playerBoard.shipsSunk()).toBe(false);
+
   });
+
+
 });
+
