@@ -69,7 +69,6 @@ describe("Gameboard class", () => {
       const defaultShipCoords = [{x: 1, y: 1}, {x: 1, y: 3}, {x: 1, y: 5}, {x: 1, y: 7}, {x: 3, y: 1}, {x: 3, y: 4}, {x: 3, y: 7}, {x: 5, y: 1}, {x: 5, y: 5}, {x: 7, y: 1}]
 
       g.defaultShipPlacement()
-      console.log(g, '\n', g.board)
 
       for (let i = 0; i < defaultShipCoords.length; i++) {
             expect(g.board[defaultShipCoords[i].x][defaultShipCoords[i].y]).toBe(i)
