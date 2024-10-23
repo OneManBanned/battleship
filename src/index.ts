@@ -1,10 +1,12 @@
 import pkg from "prompt-sync";
 const prompt = pkg();
 
+import inputValidator from "./inputValidation/inputValidation";
 import Battleships from "./battleships";
 import Player from "./player";
 
 const battleship = new Battleships();
+const { validate } = inputValidator()
 const player1 = battleship.player1;
 const player2 = battleship.player2;
 
@@ -29,7 +31,14 @@ function printBoard(player: Player) {
 }
 
 function inputCoordinate(axis: string): string {
-  return prompt(`Enter ${axis} number you wish to fire on: `);
+    let input = ""
+
+    while(!validate(input)) {
+    input = prompt(`Enter ${axis} number you wish to fire on: `);
+    if (!validate(input)) console.log("Enter a number between 0-9")
+    }
+
+     return input;
 }
 
 while (!player1.playerBoard.shipsSunk() && !player2.playerBoard.shipsSunk()) {
@@ -41,8 +50,8 @@ while (!player1.playerBoard.shipsSunk() && !player2.playerBoard.shipsSunk()) {
 
   printBoard(player2);
 
-  coordinates.x = Number(inputCoordinate("x").trim());
-  coordinates.y = Number(inputCoordinate("y").trim());
+  coordinates.x = Number(inputCoordinate("x"));
+  coordinates.y = Number(inputCoordinate("y"));
 
   player1.fire(player2, coordinates);
 }
