@@ -1,23 +1,22 @@
 import inputValidator from "../src/inputValidation/inputValidation"
 
 describe("InputValidator", () => {
+    const { validate } = inputValidator()
 
-    test("isWrongLength should return false for an empty string", () => {
-        const { isWrongLength, isNumber } = inputValidator()
-
-        expect(isWrongLength("")).toEqual(false)
+    test("validate should retrun true for '0'", () => {
+        expect(validate("0")).toEqual(true)
     })
 
-    test("isWrongLength should return true for a string with a space", () => {
-        const { isWrongLength, isNumber } = inputValidator()
+    test("validate should return false for an empty string", () => {
 
-        expect(isWrongLength(" ")).toEqual(true)
+        expect(validate("")).toEqual(false)
     })
 
-    test("isWrongLength should return false for a string with two spaces", () => {
-        const { isWrongLength, isNumber } = inputValidator()
+    test("validate should return false for a string with a space", () => {
+        expect(validate(" ")).toEqual(false)
+    })
 
-        expect(isWrongLength("  ")).toEqual(false)
-
+    test("validate should return false for a string with two spaces", () => {
+        expect(validate("  ")).toEqual(false)
     })
 })

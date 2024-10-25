@@ -13,6 +13,7 @@ const player2 = battleship.player2;
 player1.playerBoard.defaultShipPlacement();
 player2.playerBoard.defaultShipPlacement();
 
+
 function printBoard(player: Player) {
   const self = player;
 
@@ -41,7 +42,13 @@ function inputCoordinate(axis: string): string {
      return input;
 }
 
+let turn = true
+
 while (!player1.playerBoard.shipsSunk() && !player2.playerBoard.shipsSunk()) {
+
+  const currentPlayer = turn ? player1 : player2
+  const currentTarget = !turn ? player1 : player2
+
   const coordinates = { x: 0, y: 0 };
 
   printBoard(player1);
@@ -53,7 +60,9 @@ while (!player1.playerBoard.shipsSunk() && !player2.playerBoard.shipsSunk()) {
   coordinates.x = Number(inputCoordinate("x"));
   coordinates.y = Number(inputCoordinate("y"));
 
-  player1.fire(player2, coordinates);
+  currentPlayer.fire(currentTarget, coordinates);
+
+  turn = !turn
 }
 
 console.log("\n", "GAME OVER");
