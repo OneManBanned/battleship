@@ -1,4 +1,4 @@
-import Player from "./player";
+import Player from "./classes/player";
 import inputCoordinate from "./input/getInput";
 
 const player1 = new Player() 
@@ -51,3 +51,9 @@ console.log("\n", "GAME OVER");
 player1.playerBoard.shipsSunk()
   ? console.log("Player 2 Won")
   : console.log("Player 1 Won");
+
+  function printWinner(player) {
+
+      console.log("\n", `Game Over - ${winner} won`)
+
+  }

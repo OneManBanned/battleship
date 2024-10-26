@@ -1,5 +1,5 @@
-import Gameboard from "../src/gameboard";
-import Player from "../src/player";
+import Gameboard from "../src/classes/gameboard";
+import Player from "../src/classes/player";
 
 describe("Gameboard class", () => {
   let g;

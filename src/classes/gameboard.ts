@@ -1,5 +1,5 @@
-import Ship from "../src/ship";
-import { Point } from "../types/types";
+import Ship from "./ship";
+import { Point } from "../../types/types";
 
 export default class Gameboard {
     ships: { [key: number]: Ship };
