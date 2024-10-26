@@ -1,4 +1,4 @@
-import inputValidator from "../src/inputValidation/inputValidation"
+import inputValidator from "../src/input/inputValidation"
 
 describe("InputValidator", () => {
     const { validate } = inputValidator()

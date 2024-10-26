@@ -1,16 +1,11 @@
-import pkg from "prompt-sync";
-const prompt = pkg();
-
-import inputValidator from "./inputValidation/inputValidation";
 import Player from "./player";
+import inputCoordinate from "./input/getInput";
 
-const { validate } = inputValidator()
 const player1 = new Player() 
 const player2 = new Player()
 
 player1.playerBoard.defaultShipPlacement();
 player2.playerBoard.defaultShipPlacement();
-
 
 function printBoard(player: Player) {
   const self = player;
@@ -27,17 +22,6 @@ function printBoard(player: Player) {
     }
     console.log(r);
   }
-}
-
-function inputCoordinate(axis: string): string {
-    let input = ""
-
-    while(!validate(input)) {
-    input = prompt(`Enter ${axis} number you wish to fire on: `);
-    if (!validate(input)) console.log("Enter a number between 0-9")
-    }
-
-     return input;
 }
 
 let turn = true
