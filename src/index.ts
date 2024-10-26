@@ -2,13 +2,11 @@ import pkg from "prompt-sync";
 const prompt = pkg();
 
 import inputValidator from "./inputValidation/inputValidation";
-import Battleships from "./battleships";
 import Player from "./player";
 
-const battleship = new Battleships();
 const { validate } = inputValidator()
-const player1 = battleship.player1;
-const player2 = battleship.player2;
+const player1 = new Player() 
+const player2 = new Player()
 
 player1.playerBoard.defaultShipPlacement();
 player2.playerBoard.defaultShipPlacement();
