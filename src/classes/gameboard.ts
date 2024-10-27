@@ -15,12 +15,14 @@ export default class Gameboard {
         let availableGrid = 0;
         let yAxis = coords.y;
 
+        // Checks if grid is empty
         if (
             this.checkGrid(coords) === undefined &&
             this.checkEmptyAdjacent(coords, key)
         ) {
             for (let i = 0; i < shipLength; ++i) {
                 let nextCoords = { x: coords.x, y: yAxis };
+                // checks each subsequent grid is empty. Up to length of ship.
                 if (
                     this.checkGrid(nextCoords) === undefined &&
                     this.checkEmptyAdjacent(nextCoords, key)
@@ -32,6 +34,7 @@ export default class Gameboard {
 
             yAxis = coords.y;
 
+            // checks all necessary grids are available before adding ship key to grids
             if (shipLength === availableGrid) {
                 for (let i = 0; i <= shipLength; ++i) {
                     this.board[coords.x][yAxis] = key;
