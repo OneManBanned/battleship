@@ -1,28 +1,14 @@
 import Player from "./classes/player";
 import inputCoordinate from "./input/getInput";
+import ConsoleUI from "./ui/consoleInterface";
+import UI from "./ui/consoleInterface";
 
 const player1 = new Player() 
 const player2 = new Player()
+const ui =  ConsoleUI(player1, player2)
 
 player1.playerBoard.defaultShipPlacement();
 player2.playerBoard.defaultShipPlacement();
-
-function printBoard(player: Player) {
-  const self = player;
-
-  for (let row = 0; row <= 9; row++) {
-    let r = "";
-    for (let col = 0; col <= 9; col++) {
-      const shipKey = self.playerBoard.board[row][col];
-      let shipSunk: boolean;
-
-      if (!isNaN(shipKey)) shipSunk = self.playerBoard.ships[shipKey].isSunk;
-
-      shipSunk || shipKey === undefined ? (r += "-") : (r += "s");
-    }
-    console.log(r);
-  }
-}
 
 let turn = true
 
@@ -33,11 +19,7 @@ while (!player1.playerBoard.shipsSunk() && !player2.playerBoard.shipsSunk()) {
 
   const coordinates = { x: 0, y: 0 };
 
-  printBoard(player1);
-
-  console.log("\n");
-
-  printBoard(player2);
+  ui.printBoards()
 
   coordinates.x = Number(inputCoordinate("x"));
   coordinates.y = Number(inputCoordinate("y"));
@@ -47,13 +29,4 @@ while (!player1.playerBoard.shipsSunk() && !player2.playerBoard.shipsSunk()) {
   turn = !turn
 }
 
-console.log("\n", "GAME OVER");
-player1.playerBoard.shipsSunk()
-  ? console.log("Player 2 Won")
-  : console.log("Player 1 Won");
-
-  function printWinner(player) {
-
-      console.log("\n", `Game Over - ${winner} won`)
-
-  }
+ui.printWinner()
