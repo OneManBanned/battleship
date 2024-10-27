@@ -3,25 +3,23 @@ import Player from "../classes/player";
 
 export default function ConsoleUI(player1: Player, player2: Player) {
 
-    function printBoard(gameboard: Gameboard) {
+    function printBoard(player: Player) {
         for (let row = 0; row <= 9; row++) {
             let r = "";
             for (let col = 0; col <= 9; col++) {
-                const shipKey = gameboard.board[row][col];
-                let shipSunk: boolean;
+                const shipKey = player.playerBoard.board[row][col];
+                const alreadyHit = player.firedAtGrid[row][col]
 
-                if (!isNaN(shipKey)) shipSunk = gameboard.ships[shipKey].isSunk;
-
-                shipSunk || shipKey === undefined ? (r += "-") : (r += "s");
+                !alreadyHit ? (r += "-") : shipKey === undefined ? (r += "x") : (r += "s");
             }
             console.log(r);
         }
     }
 
     function printBoards() {
-        printBoard(player1.playerBoard);
+        printBoard(player1);
         console.log("\n");
-        printBoard(player2.playerBoard);
+        printBoard(player2);
     }
 
     function printWinner() {
