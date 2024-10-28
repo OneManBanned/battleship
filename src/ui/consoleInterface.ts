@@ -8,7 +8,7 @@ export default function ConsoleUI(player1: Player, player2: Player) {
             let r = "";
             for (let col = 0; col <= 9; col++) {
                 const shipKey = player.playerBoard.board[row][col];
-                const alreadyHit = player.firedAtGrid[row][col]
+                const alreadyHit = player.shotsFired[row][col]
 
                 !alreadyHit ? (r += "-") : shipKey === undefined ? (r += "x") : (r += "s");
             }
