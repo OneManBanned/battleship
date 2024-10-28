@@ -1,5 +1,5 @@
 import Player from "./classes/player";
-import inputCoordinate from "./input/getInput";
+import { inputCoordinate, inputShipKey, inputShipMovement } from "./input/getInput";
 import ConsoleUI from "./ui/consoleInterface";
 
 const player1 = new Player();
@@ -10,6 +10,20 @@ player1.playerBoard.defaultShipPlacement();
 player2.playerBoard.defaultShipPlacement();
 
 let alternateTurn = false;
+let g = ""
+
+while(!g) {
+    let shipKey;
+    let shipMovement;
+    ui.printVisibleBoard(player1)
+
+    shipKey = inputShipKey()
+    shipMovement = inputShipMovement()
+
+    if (shipKey === 'q' || shipMovement === 'q') break;
+
+    player1.playerBoard.moveShip(+shipKey, shipMovement)
+}
 
 while (!player1.playerBoard.shipsSunk() && !player2.playerBoard.shipsSunk()) {
 
