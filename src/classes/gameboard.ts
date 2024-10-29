@@ -23,58 +23,51 @@ export default class Gameboard {
     this.board = Gameboard.createBoard();
   }
 
-  private placeShip(coords: Point, key: number, movingShip?: boolean) {
+  private placeShip(coords: Point, key: number, shipMoving?: boolean) {
     const { length, location } = this.ships[key];
-    let availableGrid = 0;
+    let availableGrids = 0;
     let yAxis = coords.y;
 
-    // Checks if grid and adjacent grids are empty
-    if (
-      (this.checkGrid(coords) === undefined || this.checkGrid(coords) === key) &&
-      this.checkEmptyAdjacent(coords, key)
-    ) {
-        // checks each subsequent grid and adjacent is empty or contains same key. Up to length of ship.
-      for (let i = 0; i < length; ++i) {
-        let nextCoords = { x: coords.x, y: yAxis };
-        if (
-          (this.checkGrid(nextCoords) === undefined || this.checkGrid(nextCoords) === key) &&
-          this.checkEmptyAdjacent(nextCoords, key)
-        ) {
-          availableGrid++;
-          yAxis++;
-        }
+    // checks each subsequent grid and adjacent grid is empty or contains same key. Up to length of ship.
+    for (let i = 0; i < length; ++i) {
+      let nextCoords = { x: coords.x, y: yAxis + i };
+      if (
+        (this.checkGrid(nextCoords) === undefined ||
+          this.checkGrid(nextCoords) === key) &&
+        this.checkEmptyAdjacent(nextCoords, key)
+      ) {
+        availableGrids++;
       }
 
       yAxis = coords.y;
 
       // checks all necessary grids are available before adding ship key to grids
-      if (length === availableGrid) {
-
+      if (length === availableGrids) {
+        if (shipMoving) {
           // if ship is moving replace all grids it occupied with undefined
-        if (movingShip) {
-            this.removeShip(location, length)
-            this.ships[key].location = coords
+          this.removeShip(location, length);
+          //  and update ship with new location
+          this.ships[key].location = coords;
         }
 
+        // add ship key to new gird locations
         for (let i = 0; i < length; ++i) {
-          this.board[coords.x][yAxis] = key;
-          yAxis++;
+          this.board[coords.x][yAxis + i] = key;
         }
       }
     }
   }
 
   private removeShip(location: Point, length: number) {
-      for (let i = 0; i < length; i++) {
-          this.board[location.x][location.y + i] = undefined
-      }
+    for (let i = 0; i < length; i++) {
+      this.board[location.x][location.y + i] = undefined;
+    }
   }
 
   moveShip(key: number, direction: string) {
-
     const shipLocation: Point = this.ships[key].location;
 
-   debugger 
+    debugger;
     switch (direction) {
       case "right":
         this.placeShip({ x: shipLocation.x, y: shipLocation.y + 1 }, key, true);
@@ -89,7 +82,6 @@ export default class Gameboard {
         this.placeShip({ x: shipLocation.x + 1, y: shipLocation.y }, key, true);
         break;
     }
-
   }
 
   shipsSunk() {
@@ -136,7 +128,6 @@ export default class Gameboard {
       this.placeShip(coords, index),
     );
   }
-
 
   static createShips() {
     const container = {};
