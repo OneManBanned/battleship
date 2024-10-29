@@ -1,15 +1,15 @@
-export default function inputValidator() {
+export const validateText = (str: string) => ['left', 'right', 'Up', 'down', 'q'].includes(str.toLowerCase().trim())
 
-  const validate = function(str: string)  {
+export function validateNumber(str: string)  {
 
       let formattedStr = str.split(" ").join("")
 
-      return isWrongLength(formattedStr) && isNumber(formattedStr)
+      return isRightLength(formattedStr) && isNumber(formattedStr)
 
   }
 
-  const isWrongLength = function(str: string): boolean { return str.length === 1};
-  const isNumber = function(str: string): boolean  { return !isNaN(Number(str)) };
+  const isRightLength = (str: string): boolean => str.length === 1
+  const isNumber = (str: string): boolean => !isNaN(Number(str)) 
 
-  return { validate };
-}
+
+

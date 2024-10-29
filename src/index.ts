@@ -13,16 +13,18 @@ let alternateTurn = false;
 let g = ""
 
 while(!g) {
-    let shipKey;
-    let shipMovement;
+    let shipKey: number = 0;
+    let shipMovement: string | undefined;
+
     ui.printVisibleBoard(player1)
 
-    shipKey = inputShipKey()
+    shipKey = Number(inputShipKey())
+
     shipMovement = inputShipMovement()
 
-    if (shipKey === 'q' || shipMovement === 'q') break;
+    if (shipMovement === "q") break
 
-    player1.playerBoard.moveShip(+shipKey, shipMovement)
+    player1.playerBoard.moveShip(shipKey, shipMovement)
 }
 
 while (!player1.playerBoard.shipsSunk() && !player2.playerBoard.shipsSunk()) {
