@@ -30,14 +30,14 @@ export default class Gameboard {
 
     // Checks if grid and adjacent grids are empty
     if (
-      this.checkGrid(coords) === undefined &&
+      (this.checkGrid(coords) === undefined || this.checkGrid(coords) === key) &&
       this.checkEmptyAdjacent(coords, key)
     ) {
+        // checks each subsequent grid and adjacent is empty or contains same key. Up to length of ship.
       for (let i = 0; i < length; ++i) {
         let nextCoords = { x: coords.x, y: yAxis };
-        // checks each subsequent grid and adjacent is empty or contains same key. Up to length of ship.
         if (
-          this.checkGrid(nextCoords) === undefined &&
+          (this.checkGrid(nextCoords) === undefined || this.checkGrid(nextCoords) === key) &&
           this.checkEmptyAdjacent(nextCoords, key)
         ) {
           availableGrid++;
@@ -74,6 +74,7 @@ export default class Gameboard {
 
     const shipLocation: Point = this.ships[key].location;
 
+   debugger 
     switch (direction) {
       case "right":
         this.placeShip({ x: shipLocation.x, y: shipLocation.y + 1 }, key, true);
