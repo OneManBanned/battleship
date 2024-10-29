@@ -67,7 +67,6 @@ export default class Gameboard {
   moveShip(key: number, direction: string) {
     const shipLocation: Point = this.ships[key].location;
 
-    debugger;
     switch (direction) {
       case "right":
         this.placeShip({ x: shipLocation.x, y: shipLocation.y + 1 }, key, true);
