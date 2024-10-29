@@ -119,13 +119,31 @@ describe("Gameboard class", () => {
     expect(p.playerBoard.shipsSunk()).toBe(false);
   });
 
-  test("moveShip should move ship in correct direction", () => {
+  test("moveShip should move ship in correct for input of 'up' direction", () => {
     const shipKey = 0;
     g.defaultShipPlacement();
 
     g.moveShip(shipKey, "up");
 
     expect(g.checkGrid({ x: 0, y: 1 })).toBe(shipKey);
+  });
+
+  test("moveShip should move ship in correct for input of 'left' direction", () => {
+    const shipKey = 0;
+    g.defaultShipPlacement();
+
+    g.moveShip(shipKey, "left");
+
+    expect(g.checkGrid({ x: 1, y: 0 })).toBe(shipKey);
+  });
+
+  test("moveShip should move ship in correct for input of 'right' direction", () => {
+    const shipKey = 3;
+    g.defaultShipPlacement();
+
+    g.moveShip(shipKey, "right");
+
+    expect(g.checkGrid({ x: 1, y: 8 })).toBe(shipKey);
   });
 
   test("moveShip should move different size ships in correct direction", () => {
